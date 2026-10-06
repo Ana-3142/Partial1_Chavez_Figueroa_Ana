@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monetización: cómo ganas tú</title>
+<style>
+body{margin:0;padding:24px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#fafaf7;color:#1d1d1b}
+h1{font-size:1.4rem;margin:0 0 16px}
+.wrap{overflow-x:auto;background:#fff;border:1px solid #e3e3dc;border-radius:12px;padding:16px}
+</style>
+</head>
+<body>
+<h1>Monetización: cómo ganas tú</h1>
+<div class="wrap">
+<pre class="mermaid">
+erDiagram
+  PLAN_SUSCRIPCION ||--o{ SUSCRIPCION : "se contrata"
+  USUARIO ||--o{ SUSCRIPCION : "suscribe"
+  PEDIDO ||--|| COMISION : "genera"
+  USUARIO ||--o{ RETIRO : "solicita"
+  COMISION }o--o| RETIRO : "se descuenta en"
+  PRODUCTO ||--o{ PROMOCION : "se destaca"
+  PROMOCION ||--|| PAGO_PLATAFORMA : "cobra"
+  SUSCRIPCION ||--o{ PAGO_PLATAFORMA : "cobra"
+  PLAN_SUSCRIPCION {
+    int id_plan PK
+    string nombre "Gratis, Emprendedor, Pro"
+    decimal precio_mensual
+    decimal porcentaje_comision
+    int limite_productos
+  }
+  SUSCRIPCION {
+    int id_suscripcion PK
+    int id_usuario FK
+    int id_plan FK
+    date inicio
+    date fin
+    string estado
+  }
+  COMISION {
+    int id_comision PK
+    int id_pedido FK
+    int id_retiro FK
+    decimal porcentaje
+    decimal monto_plataforma
+    decimal monto_vendedor
+  }
+  RETIRO {
+    int id_retiro PK
+    int id_usuario FK
+    decimal monto
+    string cuenta_destino
+    string estado "pendiente, pagado"
+  }
+  PROMOCION {
+    int id_promocion PK
+    int id_producto FK
+    string tipo "destacado, banner"
+    int dias
+    decimal precio
+  }
+  PAGO_PLATAFORMA {
+    int id_cobro PK
+    int id_suscripcion FK
+    int id_promocion FK
+    decimal monto
+    datetime fecha
+  }
+  USUARIO {
+    int id_usuario PK
+  }
+  PEDIDO {
+    int id_pedido PK
+  }
+  PRODUCTO {
+    int id_producto PK
+  }
+</pre>
+</div>
+<!-- Requiere internet para cargar Mermaid -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:"neutral"});</script>
+</body>
+</html>

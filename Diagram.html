@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosistema de Emprendimiento Estudiantil</title>
+    <!-- Carga de la librería Mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'forest' });
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #ffc1d3;
+            text-align: center;
+        }
+        .container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 1000px;
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Ecosistema de Emprendimiento Estudiantil y Reventa</h1>
+        
+        <div class="mermaid">
+            graph TD
+                A["Inicio: Estudiante Vendedor"] --> B["Subir articulo a la Plataforma"]
+                B --> C{"Tipo de articulo"}
+                
+                C -->|Emprendimiento Pequeno| D["Manualidades, Comida o Servicios"]
+                C -->|Objetos No Usados| E["Ropa, Libros, Uniformes o Tecnologia"]
+                
+                D --> F["Fijar precio y detalles"]
+                E --> G["Subir foto y describir estado"]
+                
+                F --> H["Publicar en Escaparate Digital"]
+                G --> H
+                
+                I["Inicio: Estudiante Comprador"] --> J["Explorar Catalogo"]
+                J --> K["Seleccionar y Pagar"]
+                H --> K
+                
+                K --> L["Transaccion Completada"]
+                L --> M["Sistema de Pago Seguro"]
+                
+                M --> N["Monetizacion e Ingresos"]
+                N --> O["Comision por Venta"]
+                N --> P["Anuncios Destacados"]
+                N --> Q["Publicidad de Sponsors"]
+                
+                O --> R["Ingreso Neto para Ti"]
+                P --> R
+                Q --> R
+                
+                L --> S["Entrega del Articulo en Campus"]
+        </div>
+    </div>
+
+</body>
+</html>

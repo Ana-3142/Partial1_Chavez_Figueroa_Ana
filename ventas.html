@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ventas, pagos y entregas</title>
+<style>
+body{margin:0;padding:24px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#fafaf7;color:#1d1d1b}
+h1{font-size:1.4rem;margin:0 0 16px}
+.wrap{overflow-x:auto;background:#fff;border:1px solid #e3e3dc;border-radius:12px;padding:16px}
+</style>
+</head>
+<body>
+<h1>Ventas, pagos y entregas</h1>
+<div class="wrap">
+<pre class="mermaid">
+erDiagram
+  USUARIO ||--o{ PEDIDO : "compra"
+  USUARIO ||--o{ PEDIDO : "vende"
+  PEDIDO ||--|{ DETALLE_PEDIDO : "contiene"
+  PRODUCTO ||--o{ DETALLE_PEDIDO : "se incluye en"
+  PEDIDO ||--o| PAGO : "se paga con"
+  PEDIDO ||--o| ENTREGA : "se entrega"
+  PEDIDO ||--o| RESENA : "recibe"
+  PEDIDO {
+    int id_pedido PK
+    int id_comprador FK
+    int id_vendedor FK
+    decimal subtotal
+    decimal total
+    string estado "pendiente, pagado, entregado, cancelado"
+    datetime creado_en
+  }
+  DETALLE_PEDIDO {
+    int id_detalle PK
+    int id_pedido FK
+    int id_producto FK
+    int cantidad
+    decimal precio_unitario
+  }
+  PAGO {
+    int id_pago PK
+    int id_pedido FK
+    string metodo "tarjeta, OXXO, transferencia"
+    string referencia_pasarela
+    decimal monto
+    string estado
+  }
+  ENTREGA {
+    int id_entrega PK
+    int id_pedido FK
+    string tipo "punto en campus, envio"
+    string lugar
+    datetime fecha_hora
+    string estado
+  }
+  RESENA {
+    int id_resena PK
+    int id_pedido FK
+    int calificacion
+    string comentario
+  }
+  USUARIO {
+    int id_usuario PK
+  }
+  PRODUCTO {
+    int id_producto PK
+  }
+</pre>
+</div>
+<!-- Requiere internet para cargar Mermaid -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:"neutral"});</script>
+</body>
+</html>

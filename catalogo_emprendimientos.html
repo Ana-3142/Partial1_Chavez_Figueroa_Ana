@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Usuarios, emprendimientos y catálogo</title>
+<style>
+body{margin:0;padding:24px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#fafaf7;color:#1d1d1b}
+h1{font-size:1.4rem;margin:0 0 16px}
+.wrap{overflow-x:auto;background:#fff;border:1px solid #e3e3dc;border-radius:12px;padding:16px}
+</style>
+</head>
+<body>
+<h1>Usuarios, emprendimientos y catálogo</h1>
+<div class="wrap">
+<pre class="mermaid">
+erDiagram
+  UNIVERSIDAD ||--o{ USUARIO : "pertenece"
+  USUARIO ||--o{ TIENDA : "es dueño"
+  USUARIO ||--o{ PRODUCTO : "publica"
+  TIENDA o|--o{ PRODUCTO : "agrupa"
+  CATEGORIA ||--o{ PRODUCTO : "clasifica"
+  PRODUCTO ||--o{ IMAGEN_PRODUCTO : "tiene"
+  UNIVERSIDAD {
+    int id_universidad PK
+    string nombre
+    string ciudad
+    string dominio_correo
+  }
+  USUARIO {
+    int id_usuario PK
+    int id_universidad FK
+    string nombre
+    string correo UK
+    string rol "comprador, vendedor, admin"
+    bool verificado
+    datetime creado_en
+  }
+  TIENDA {
+    int id_tienda PK
+    int id_usuario FK
+    string nombre
+    string descripcion
+    string logo_url
+    bool activa
+  }
+  CATEGORIA {
+    int id_categoria PK
+    string nombre
+  }
+  PRODUCTO {
+    int id_producto PK
+    int id_usuario FK
+    int id_tienda FK
+    int id_categoria FK
+    string titulo
+    decimal precio
+    string condicion "nuevo, usado"
+    int stock
+    string estado "activo, vendido, pausado"
+  }
+  IMAGEN_PRODUCTO {
+    int id_imagen PK
+    int id_producto FK
+    string url
+    int orden
+  }
+</pre>
+</div>
+<!-- Requiere internet para cargar Mermaid -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true,theme:"neutral"});</script>
+</body>
+</html>

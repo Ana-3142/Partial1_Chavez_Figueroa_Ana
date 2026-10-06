@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama de Flujo - Marketplace Estudiantil</title>
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .mermaid {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Marketplace Estudiantil</h1>
+
+    <div class="mermaid">
+        flowchart TD
+
+        A[Inicio] --> B[Estudiante entra a la plataforma]
+
+        B --> C{¿Qué desea hacer?}
+
+        C -->|Vender| D[Publicar producto o servicio]
+        C -->|Comprar| E[Buscar productos]
+
+        D --> F[Subir descripción, fotos y precio]
+        F --> G[Publicación activa]
+
+        E --> H[Explorar categorías]
+        H --> I[Seleccionar producto]
+
+        G --> J[Interés de compra]
+        I --> J
+
+        J --> K[Contacto entre comprador y vendedor]
+
+        K --> L{¿Se concreta la venta?}
+
+        L -->|No| M[Fin del proceso]
+        L -->|Sí| N[Registrar transacción]
+
+        N --> O[Cobro de comisión al vendedor]
+        N --> P[Pago opcional por publicación destacada]
+
+        O --> Q[Ingresos para la plataforma]
+        P --> Q
+
+        Q --> R[Calificación de comprador y vendedor]
+
+        R --> S[Fin]
+    </div>
+
+</body>
+</html>

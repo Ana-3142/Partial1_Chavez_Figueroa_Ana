@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Diagrama Red Social Friki</title>
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f5f5f5;
+    text-align:center;
+}
+
+h1{
+    color:#d87ab3;
+    margin-top:30px;
+}
+
+.flowchart{
+    position:relative;
+    width:1000px;
+    margin:auto;
+}
+
+.box{
+    display:inline-block;
+    background:#cce5a1;
+    border:1px solid #4f6f31;
+    padding:15px;
+    margin:20px;
+    min-width:220px;
+}
+
+.diamond{
+    width:180px;
+    height:180px;
+    background:#cce5a1;
+    border:1px solid #4f6f31;
+    transform:rotate(45deg);
+    margin:40px auto;
+    position:relative;
+}
+
+.diamond span{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) rotate(-45deg);
+    width:140px;
+}
+
+.arrow{
+    font-size:40px;
+    line-height:30px;
+}
+</style>
+</head>
+<body>
+
+<h1>Red Social Friki y Anime</h1>
+
+<div class="flowchart">
+
+    <div class="box">Inicio: Nuevo Usuario</div>
+
+    <div class="arrow">↓</div>
+
+    <div class="box">Crear Perfil Personalizado</div>
+
+    <div class="arrow">↓</div>
+
+    <div class="diamond">
+        <span>Seleccionar Intereses</span>
+    </div>
+
+    <div style="display:flex; justify-content:space-around;">
+
+        <div>
+            <div class="box">Anime / Manga</div>
+            <div class="arrow">↓</div>
+            <div class="box">Unirse a Comunidades Anime</div>
+        </div>
+
+        <div>
+            <div class="box">Gaming</div>
+            <div class="arrow">↓</div>
+            <div class="box">Entrar a Salas de Juego</div>
+        </div>
+
+        <div>
+            <div class="box">Cómics / Cosplay</div>
+            <div class="arrow">↓</div>
+            <div class="box">Grupos Temáticos</div>
+        </div>
+
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="box">Sistema de Recomendación</div>
+
+    <div class="arrow">↓</div>
+
+    <div class="box">Encontrar Personas con Gustos Similares</div>
+
+    <div class="arrow">↓</div>
+
+    <div class="box">Chat, Foros y Eventos Interactivos</div>
+
+    <div class="arrow">↓</div>
+
+    <div class="box">Crear Contenido y Personalizar Perfil (Estilo MySpace)</div>
+
+    <div class="arrow">↓</div>
+
+    <div class="box">Generar Comunidad y Amistades</div>
+
+</div>
+
+</body>
+</html>
